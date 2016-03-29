@@ -3,3 +3,11 @@
 /cabal.sandbox.config
 /.stack-work/
 TAGS
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*

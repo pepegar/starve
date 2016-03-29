@@ -1,11 +1,14 @@
--- | A library to do stuff.
-module Lib
-    (
-      ourAdd
-    ) where
+{-# LANGUAGE OverloadedStrings #-}
+module Lib (getRepos) where
 
--- | Add two 'Int' values.
-ourAdd :: Int  -- ^ left
-       -> Int  -- ^ right
-       -> Int  -- ^ sum
-ourAdd x y = x + y
+import Network.Wreq
+import Control.Lens
+import Data.Aeson
+import Types
+
+getRepos :: String -> IO [Repo]
+getRepos userName = do
+  response <- get "https://api.github.com/users/pepegar/repos"
+  let jsonResponse = decode body :: Maybe [Repo]
+    where body = response ^? responseBody
+  jsonResponse

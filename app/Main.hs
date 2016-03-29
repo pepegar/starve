@@ -1,8 +1,21 @@
 module Main where
 
-import Lib (ourAdd)
+import Options.Applicative
 
-import Text.Printf (printf)
+data Starve = Starve {
+  username :: String,
+  interactive :: Bool
+}
+
+runWithOptions :: Starve -> IO ()
+runWithOptions opts = do
+  putStrLn ("hello dolly " ++ username opts ++ "!!")
 
 main :: IO ()
-main = printf "2 + 3 = %d\n" (ourAdd 2 3)
+main = execParser opts >>= runWithOptions
+  where
+    parser = Starve <$> argument str (metavar "username")
+                    <*> switch (short 'i' <>
+                                long "interactive" <>
+                                help "run interactively")
+    opts = info parser mempty

@@ -22,7 +22,10 @@ library
   build-depends:       base >= 4.7 && < 5
                      , wreq
                      , aeson == 0.10.0.0
+                     , lens == 4.13
+                     , lens-aeson == 1.0.0.5
                      , text == 1.2.2.0
+                     , optparse-applicative == 0.12.1.0
 
 executable starve
   default-language:    Haskell2010
@@ -31,6 +34,7 @@ executable starve
   main-is:             Main.hs
   build-depends:       base
                      , starve
+                     , optparse-applicative == 0.12.1.0
 
 test-suite spec
   default-language:    Haskell2010

@@ -12,6 +12,7 @@ extra-deps:
 - aeson-0.10.0.0
 - wreq-0.4.1.0
 - text-1.2.2.0
+- optparse-applicative-0.12.1.0
 
 # Override default flag values for local packages and extra-deps
 flags: {}
